@@ -1,0 +1,91 @@
+Sub CopiedDataToFilteredRow()
+    Dim sourceRange As Range
+    Dim targetCell As Range
+    Dim visibleSourceCells() As Variant
+    Dim visibleTargetCells() As Variant
+    Dim i As Integer
+    
+    ' Prompt the user to select the source range
+    On Error Resume Next
+    Set sourceRange = Application.InputBox("Select the source range", Type:=8)
+    On Error GoTo 0
+    
+    ' Prompt the user to select the target cell
+    On Error Resume Next
+    Set targetCell = Application.InputBox("Select the target cell", Type:=8)
+    On Error GoTo 0
+    
+    ' Check if the source range and target cell are valid
+    If sourceRange Is Nothing Or targetCell Is Nothing Then
+        MsgBox "Invalid range or cell selection."
+        Exit Sub
+    End If
+    
+    ' Step 1: Get visible cell addresses from the source range
+    visibleSourceCells = GetVisibleCellAddresses(sourceRange)
+    
+    ' Step 2: Get visible cell addresses from the target cell with the count based on Step 1
+    visibleTargetCells = GetVisibleCellAddresses_targetrange(targetCell, UBound(visibleSourceCells))
+    
+    ' Step 3: Write cell values from Step 1 to cells in Step 2
+    For i = LBound(visibleSourceCells) To UBound(visibleSourceCells)
+            
+            targetCell.Worksheet.Range(visibleTargetCells(i)).Value = sourceRange.Worksheet.Range(visibleSourceCells(i)).Value
+        
+    Next i
+    
+    MsgBox "Data copied from source range to target cells."
+End Sub
+Function GetVisibleCellAddresses(rng As Range) As Variant
+    Dim visibleAddresses() As Variant
+    Dim cell As Range
+    Dim visibleCount As Integer
+    Dim i As Integer
+    
+    ' Count the number of visible cells
+    visibleCount = 0
+    For Each cell In rng
+        If Not cell.EntireRow.Hidden And Not cell.EntireColumn.Hidden Then
+            visibleCount = visibleCount + 1
+        End If
+    Next cell
+    
+    ' Resize the array to hold the visible cell addresses
+    ReDim visibleAddresses(1 To visibleCount)
+    
+    ' Populate the array with the visible cell addresses
+    i = 1
+    For Each cell In rng
+        If Not cell.EntireRow.Hidden And Not cell.EntireColumn.Hidden Then
+            visibleAddresses(i) = cell.Address
+            i = i + 1
+        End If
+    Next cell
+    
+    ' Return the array of visible cell addresses
+    GetVisibleCellAddresses = visibleAddresses
+End Function
+Function GetVisibleCellAddresses_targetrange(rng As Range, count As Integer) As Variant
+    Dim visibleAddresses() As Variant
+    ReDim visibleAddresses(1 To count)
+    
+    Dim visibleCount As Integer
+    visibleCount = 0
+    
+    Dim cell As Range
+    Set cell = rng
+    
+    Do While visibleCount < count
+        If Not cell.EntireRow.Hidden And Not cell.EntireColumn.Hidden Then
+            visibleCount = visibleCount + 1
+            visibleAddresses(visibleCount) = cell.Address
+        End If
+        
+        ' Move to the next cell
+        Set cell = cell.Offset(1, 0)
+    Loop
+    
+    GetVisibleCellAddresses_targetrange = visibleAddresses
+End Function
+
+
