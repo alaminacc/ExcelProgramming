@@ -1,0 +1,48 @@
+# Excel Macro: Copy Data to Filtered Row
+
+Welcome to the "Copy Data to Filtered Row" project! This Excel macro simplifies the process of copying and pasting data to filtered rows. The project includes a video demonstration, an example Excel file, and the VBA code.
+
+## Table of Contents
+- [Introduction](---)
+- [Files](---)
+- [How to Use](---)
+- [Video Demonstration](#video-demonstration)
+- [VBA Code](#vba-code)
+- [Contributing](---)
+- [License](---)
+
+## Introduction
+
+This project provides a solution for efficiently copying and pasting data into filtered rows in Excel. Whether you're dealing with large datasets or simply want to streamline your workflow, this Excel macro can be a valuable tool.
+
+## Files
+
+- **Excel Files:**
+  - [`Copy & Paste only visible cells.xlsx`](Copy%20&%20Paste%20only%20visible%20cells.xlsx): Example Excel file containing data used in the video.
+- **Code:**
+  - [`code.txt`](code.txt): VBA code for the "Copy Data to Filtered Row" macro.
+- **Media:**
+  - [`Program for Copied Data to Filtered Row.mp4`](Program%20for%20Copied%20Data%20to%20Filtered%20Row.mp4): Video demonstration of how to use the Excel macro.
+
+## How to Use
+
+1. Open the example Excel file (`Copy & Paste only visible cells.xlsx`).
+2. Follow the steps outlined in the video demonstration (`Program for Copied Data to Filtered Row.mp4`) to understand how the Excel macro works.
+3. Open the VBA editor in Excel and copy the code from `code.txt` into your project.
+4. Run the macro to copy data to filtered rows based on the provided example.
+
+## Video Demonstration
+
+Watch the video demonstration to see the Excel macro in action: [Program for Copied Data to Filtered Row.mp4](Program%20for%20Copied%20Data%20to%20Filtered%20Row.mp4).
+
+## VBA Code
+
+The VBA code for the "Copy Data to Filtered Row" macro is available in `code.txt`. You can review, customize, and use this code in your own Excel projects.
+
+## Contributing
+
+Feel free to contribute to this project by submitting issues, feature requests, or improvements to the code. Your feedback and contributions are highly appreciated.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute the code according to the terms of the license.
